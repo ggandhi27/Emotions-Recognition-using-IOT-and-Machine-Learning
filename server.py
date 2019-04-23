@@ -1,5 +1,20 @@
-
+import thread
 import socket
+
+
+def receive_program(conn,address) :
+    while True:
+        data = conn.recv(1024).decode()
+        if not data:
+            # if data is not received break
+            break
+        print("from connected user: " + str(data))
+
+
+def send_program(conn,address) :
+    while True:
+        data = raw_input(' -> ')
+        conn.send(data.encode())  # send data to the client
 
 
 def server_program():
@@ -13,17 +28,15 @@ def server_program():
 
     # configure how many client the server can listen simultaneously
     server_socket.listen(2)
-    conn, address = server_socket.accept()  # accept new connection
-    print("Connection from: " + str(address))
+    connection = server_socket.accept()  # accept new connection
+    print("Connection from: " + str(connection[1]))
+    thread.start_new_thread(receive_program,connection)
+    thread.start_new_thread(send_program,connection)
+
+    conn = connection[0]
+
     while True:
-        # receive data stream. it won't accept data packet greater than 1024 bytes
-        data = conn.recv(1024).decode()
-        if not data:
-            # if data is not received break
-            break
-        print("from connected user: " + str(data))
-        data = raw_input(' -> ')
-        conn.send(data.encode())  # send data to the client
+        None
 
     conn.close()  # close the connection
 
