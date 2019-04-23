@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/moodtxt"
         android:layout_width="355dp"
         android:layout_height="98dp"
         android:layout_x="32dp"

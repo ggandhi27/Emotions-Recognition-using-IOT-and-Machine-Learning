@@ -11,7 +11,7 @@
 
     <EditText
 
-        android:id="@+id/editText"
+        android:id="@+id/ipAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -19,17 +19,29 @@
         android:layout_x="5dp"
         android:layout_y="226dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteY="46dp" />
+        android:inputType="textUri"
+        tools:layout_editor_absoluteY="46dp"
+        tools:text="IP Address" />
 
     <Button
         android:id="@+id/sendBtn"
-        android:layout_width="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_x="147dp"
+        android:layout_x="0dp"
         android:layout_y="323dp"
         android:text="Send"
         tools:layout_editor_absoluteX="145dp"
         tools:layout_editor_absoluteY="115dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_x="8dp"
+        android:layout_y="146dp"
+        android:text="Enter IP of Server"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="161dp"
+        android:textSize="@android:dimen/app_icon_size"/>
 </AbsoluteLayout>
