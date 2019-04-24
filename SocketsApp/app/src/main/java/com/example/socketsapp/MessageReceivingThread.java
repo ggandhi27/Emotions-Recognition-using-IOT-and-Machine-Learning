@@ -28,7 +28,7 @@ public class MessageReceivingThread implements Runnable {
                 Log.v("1","1");
                 MessageReceivingThread.message = bufferedReader.readLine();
                 System.out.println("Message is :: " + MessageReceivingThread.message);
-
+                MoodActivity.staticMood.setText(message);
             }
 
         } catch (IOException e) {

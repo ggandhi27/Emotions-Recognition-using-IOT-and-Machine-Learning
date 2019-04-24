@@ -15,9 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MoodActivity extends AppCompatActivity {
 
     Button happyBtn,sadBtn,fearBtn,angryBtn;
-    TextView moodText;
     Socket socket;
     DataOutputStream dataOutputStream;
+    TextView moodText;
+    static TextView staticMood;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class MoodActivity extends AppCompatActivity {
         fearBtn = (Button)findViewById(R.id.fearBtn);
         angryBtn = (Button)findViewById(R.id.angerBtn);
         moodText = (TextView) findViewById(R.id.moodtxt);
+
+        MoodActivity.staticMood = moodText;
 
         socket = Client.socketIns;
         Thread thread = new Thread(new MessageReceivingThread());
