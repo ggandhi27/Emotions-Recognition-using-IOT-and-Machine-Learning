@@ -31,7 +31,8 @@ public class MoodActivity extends AppCompatActivity {
         moodText = (TextView) findViewById(R.id.moodtxt);
 
         socket = Client.socketIns;
-
+        Thread thread = new Thread(new MessageReceivingThread());
+        thread.start();
         try {
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
