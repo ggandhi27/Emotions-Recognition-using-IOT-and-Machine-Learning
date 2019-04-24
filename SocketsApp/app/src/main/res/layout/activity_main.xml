@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    >
+
+    <EditText
+
+        android:id="@+id/ipAddress"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_x="133dp"
+        android:layout_y="210dp"
+        android:ems="10"
+        android:inputType="textUri"
+        tools:layout_editor_absoluteY="46dp"
+        tools:text="IP Address" />
+
+    <EditText
+
+        android:id="@+id/port"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_x="133dp"
+        android:layout_y="266dp"
+        android:ems="10"
+        android:inputType="textUri"
+        tools:layout_editor_absoluteY="46dp"
+        tools:text="Port" />
+
+    <Button
+        android:id="@+id/sendBtn"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="323dp"
+        android:text="Connect"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="0dp"
+        android:layout_y="61dp"
+        android:text="Enter IP and Port of Server"
+        android:textSize="@android:dimen/app_icon_size"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="161dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@android:string/search_go"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="123dp"
+        android:layout_height="43dp"
+        android:layout_x="4dp"
+        android:layout_y="211dp"
+        android:text="IP Address\t:"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="215dp"
+        android:textSize="22dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="123dp"
+        android:layout_height="43dp"
+        android:layout_x="5dp"
+        android:layout_y="267dp"
+        android:text="Port No       :"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="215dp"
+        android:textSize="22dp"
+        android:gravity="center_vertical"
+        />
+
+</AbsoluteLayout>

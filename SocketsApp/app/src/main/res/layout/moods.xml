@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="369dp"
+        android:layout_height="117dp"
+        android:layout_x="23dp"
+        android:layout_y="256dp">
+
+
+        <Button
+            android:id="@+id/happyBtn"
+            android:layout_width="169dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Happy"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/holo_orange_light"/>
+
+        <Button
+            android:id="@+id/sadBtn"
+            android:layout_width="169dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Sad"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="369dp"
+        android:layout_height="117dp"
+        android:layout_x="23dp"
+        android:layout_y="383dp">
+
+
+        <Button
+            android:id="@+id/fearBtn"
+            android:layout_width="169dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Fear"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/holo_red_light"/>
+
+        <Button
+            android:id="@+id/angerBtn"
+            android:layout_width="169dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Angry"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@android:color/background_light"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/moodtxt"
+        android:layout_width="355dp"
+        android:layout_height="98dp"
+        android:layout_x="32dp"
+        android:layout_y="74dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="127dp"
+        android:textSize="@android:dimen/notification_large_icon_height"
+        android:textColor="@android:color/background_dark"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="138dp"
+        android:layout_y="643dp"
+        android:text="Close Connection"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="3dp"
+        style="@style/Base.DialogWindowTitleBackground.AppCompat"/>
+
+
+</AbsoluteLayout>
