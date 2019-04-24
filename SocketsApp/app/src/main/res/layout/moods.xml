@@ -73,5 +73,16 @@
         android:textColor="@android:color/background_dark"
         android:textAlignment="center"/>
 
+    <Button
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="138dp"
+        android:layout_y="643dp"
+        android:text="Close Connection"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="3dp"
+        style="@style/Base.DialogWindowTitleBackground.AppCompat"/>
+
 
 </AbsoluteLayout>

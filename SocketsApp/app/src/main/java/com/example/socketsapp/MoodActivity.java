@@ -1,5 +1,6 @@
 package com.example.socketsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ public class MoodActivity extends AppCompatActivity {
     Socket socket;
     DataOutputStream dataOutputStream;
     TextView moodText;
+    Button closeBtn;
+
     static TextView staticMood;
 
     @Override
@@ -30,6 +33,7 @@ public class MoodActivity extends AppCompatActivity {
         fearBtn = (Button)findViewById(R.id.fearBtn);
         angryBtn = (Button)findViewById(R.id.angerBtn);
         moodText = (TextView) findViewById(R.id.moodtxt);
+        closeBtn = (Button) findViewById(R.id.close);
 
         MoodActivity.staticMood = moodText;
 
@@ -42,6 +46,18 @@ public class MoodActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    socket.close();
+                    System.exit(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         happyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
