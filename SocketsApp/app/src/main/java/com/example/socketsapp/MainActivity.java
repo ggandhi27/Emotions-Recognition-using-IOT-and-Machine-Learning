@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                         socket = client.connectServer();
                         showToast("Trying to connect");
                         if (socket != null) {
-                            startActivity(new Intent(MainActivity.this, MoodActivity.class));
+                            Intent intent = new Intent(MainActivity.this, MoodActivity.class);
+                            startActivity(intent);
                         }
                         else {
                             showToast("Could not create connection");

@@ -9,6 +9,7 @@ public class Client {
 
     String ipAddress;
     int port;
+    static Socket socketIns;
 
     Client(String addr, int port) {
         this.ipAddress = addr;
@@ -22,6 +23,7 @@ public class Client {
         try {
             InetAddress serverAddr = InetAddress.getByName(ipAddress);
             socket = new Socket(serverAddr, port);
+            Client.socketIns = socket;
             return socket;
 
         }
