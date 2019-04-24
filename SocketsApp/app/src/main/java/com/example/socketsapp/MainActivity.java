@@ -4,38 +4,74 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText e1;
-
+    EditText ipAddressTxt;
+    EditText portTxt;
     Button sendButton;
-
 
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         setContentView(R.layout.activity_main);
 //        setContentView(R.layout.moods);
-        e1 = (EditText)findViewById(R.id.ipAddress);
-        sendButton = (Button)findViewById(R.id.sendBtn);
+        ipAddressTxt = (EditText) findViewById(R.id.ipAddress);
+        sendButton = (Button) findViewById(R.id.sendBtn);
+        portTxt = (EditText) findViewById(R.id.port);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int port = 0;
+                String ipAddress = ipAddressTxt.getText().toString();
+                String portString = portTxt.getText().toString();
+                ipAddress.replaceAll(" ", "");
+                Socket socket;
+                if ("".equals(ipAddress)) {
+                    showToast("Please enter a valid Ip Address");
+                } else if ("".equals(portString)) {
+                    showToast("Please enter a valid port number");
+                } else {
+                    try {
+                        port = Integer.parseInt(portString);
 
-                startActivity(new Intent(MainActivity.this,MoodActivity.class));
+                        Client client = new Client(ipAddress, port);
+                        socket = client.connectServer();
+                        showToast("Trying to connect");
+                        if (socket != null) {
+                            startActivity(new Intent(MainActivity.this, MoodActivity.class));
+                        }
+                        else {
+                            showToast("Could not create connection");
+                        }
+
+                    } catch (NumberFormatException e) {
+                        showToast("Please enter a valid port number.");
+                    } catch (Exception e) {
+                       showToast("Could not connect to the server");
+                       e.printStackTrace();
+                    }
+                }
             }
         });
     }
 
-    public void send(View view) {
-        MessageSender messageSender = new MessageSender();
-        messageSender.execute(e1.getText().toString());
+
+    public void showToast(String message) {
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

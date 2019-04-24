@@ -70,7 +70,8 @@
         tools:layout_editor_absoluteX="110dp"
         tools:layout_editor_absoluteY="127dp"
         android:textSize="@android:dimen/notification_large_icon_height"
-        android:textColor="@android:color/background_dark"/>
+        android:textColor="@android:color/background_dark"
+        android:textAlignment="center"/>
 
 
 </AbsoluteLayout>
