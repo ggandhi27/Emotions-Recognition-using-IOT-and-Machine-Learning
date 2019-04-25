@@ -4,33 +4,37 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
-url = "/tmp/mood.csv"
+classifier=None
 
-# Assign colum names to the dataset
-names = ['Temperature', 'Pulse', 'Mood']
+def generateClassifier() :
 
-# Read dataset to pandas dataframe
-dataset = pd.read_csv(url, names=names)
+    global classifier
+    url = "/tmp/mood.csv"
 
-print(dataset)
+    # Assign colum names to the dataset
+    names = ['Temperature', 'Pulse', 'Mood']
 
-dataset.head()
-"""
-X = dataset.iloc[:, :-1].values  
-y = dataset.iloc[:, 2].values  
+    # Read dataset to pandas dataframe
+    dataset = pd.read_csv(url, names=names)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)  
+    print(dataset)
 
-scaler = StandardScaler()  
-scaler.fit(X_train)
+    dataset.head()
+    X = dataset.iloc[:, :-1].values  
+    y = dataset.iloc[:, 2].values  
 
-X_train = scaler.transform(X_train)  
-X_test = scaler.transform(X_test) 
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)  
 
-classifier = KNeighborsClassifier(n_neighbors=5)  
-classifier.fit(X_train, y_train)
+    scaler = StandardScaler()  
+    scaler.fit(X_train)
 
-y_pred = classifier.predict(X_test)
+    X_train = scaler.transform(X_train)  
 
-print y_pred
-"""
+    classifier = KNeighborsClassifier(n_neighbors=5)  
+    classifier.fit(X_train, y_train)
+
+def getResult(X_test):
+
+    global classifier
+    y_pred = classifier.predict(X_test)
+    return y_pred

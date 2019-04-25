@@ -2,6 +2,8 @@ import thread
 import socket
 
 MOOD = "Happy"
+RESULT = "Happy"
+flag = ""
 
 def receive_program(conn,address) :
     global MOOD
@@ -19,11 +21,15 @@ def receive_program(conn,address) :
         if (MOOD != string):
             MOOD = string
 
-
 def send_program(conn,address) :
+    global RESULT
+    global flag
+
     while True:
-        data = raw_input(' -> ')
-        conn.send(data.encode())  # send data to the client
+        if flag != RESULT :
+            flag = RESULT
+            result = RESULT+"\n"
+            conn.send(result.encode())  # send data to the client
 
 
 def server_program():
