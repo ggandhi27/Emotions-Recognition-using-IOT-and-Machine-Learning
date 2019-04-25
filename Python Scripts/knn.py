@@ -12,8 +12,10 @@ names = ['Temperature', 'Pulse', 'Mood']
 # Read dataset to pandas dataframe
 dataset = pd.read_csv(url, names=names)
 
-dataset.head()
+print(dataset)
 
+dataset.head()
+"""
 X = dataset.iloc[:, :-1].values  
 y = dataset.iloc[:, 2].values  
 
@@ -31,3 +33,4 @@ classifier.fit(X_train, y_train)
 y_pred = classifier.predict(X_test)
 
 print y_pred
+"""

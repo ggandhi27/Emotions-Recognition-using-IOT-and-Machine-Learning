@@ -8,6 +8,5 @@ def fileExists(filepath):
 def createCsv(filepath):
     if fileExists(filepath) == False:
         f = open(filepath,"w")
-        f.write("Temperature,Pulse,Mood\n")
         f.close()
 
