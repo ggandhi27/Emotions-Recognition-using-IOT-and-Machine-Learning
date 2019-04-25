@@ -1,7 +1,7 @@
 import thread
 import socket
 
-MOOD = ""
+MOOD = "Happy"
 
 def receive_program(conn,address) :
     global MOOD
@@ -48,9 +48,4 @@ def server_program():
         None
 
     conn.close()  # close the connection
-
-
-if __name__ == '__main__':
-    MOOD=""
-    server_program()
 
