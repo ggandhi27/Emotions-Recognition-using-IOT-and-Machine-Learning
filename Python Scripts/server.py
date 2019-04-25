@@ -10,10 +10,14 @@ def receive_program(conn,address) :
         if not data:
             # if data is not received break
             break
-        if (MOOD != str(data)):
-            MOOD = str(data)
-        print("from connected user: " + str(data))
-        print("Mood: " + MOOD)
+
+        data = data[2:]
+        data = data.split()
+        string = ""
+        string = string.join(data)
+        print("String :: "+string)
+        if (MOOD != string):
+            MOOD = string
 
 
 def send_program(conn,address) :
@@ -26,7 +30,7 @@ def server_program():
     # get the hostname
     host = socket.gethostname()
     host = socket.gethostbyname(host)
-    port = 5000  # initiate port no above 1024
+    port = 5001  # initiate port no above 1024
 
     print "IP Address :: "+host
     print "Port :: "+str(port)
