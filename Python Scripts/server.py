@@ -1,14 +1,19 @@
 import thread
 import socket
 
+MOOD = ""
 
 def receive_program(conn,address) :
+    global MOOD
     while True:
         data = conn.recv(1024).decode()
         if not data:
             # if data is not received break
             break
+        if (MOOD != str(data)):
+            MOOD = str(data)
         print("from connected user: " + str(data))
+        print("Mood: " + MOOD)
 
 
 def send_program(conn,address) :
@@ -20,7 +25,11 @@ def send_program(conn,address) :
 def server_program():
     # get the hostname
     host = socket.gethostname()
+    host = socket.gethostbyname(host)
     port = 5000  # initiate port no above 1024
+
+    print "IP Address :: "+host
+    print "Port :: "+str(port)
 
     server_socket = socket.socket()  # get instance
     # look closely. The bind() function takes tuple as argument
@@ -42,5 +51,6 @@ def server_program():
 
 
 if __name__ == '__main__':
+    MOOD=""
     server_program()
 
