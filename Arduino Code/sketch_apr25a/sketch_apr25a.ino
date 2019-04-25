@@ -21,7 +21,7 @@ void loop() {
 
  Serial.print(temp);
  Serial.print(",");
- Serial.println(pulse_val);
+ Serial.print(pulse_val);
 
  delay(1000);
 }

@@ -4,10 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+url = "/tmp/mood.csv"
 
 # Assign colum names to the dataset
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
+names = ['Temperature', 'Pulse', 'Mood']
 
 # Read dataset to pandas dataframe
 dataset = pd.read_csv(url, names=names)
@@ -15,9 +15,9 @@ dataset = pd.read_csv(url, names=names)
 dataset.head()
 
 X = dataset.iloc[:, :-1].values  
-y = dataset.iloc[:, 4].values  
+y = dataset.iloc[:, 2].values  
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)  
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)  
 
 scaler = StandardScaler()  
 scaler.fit(X_train)
