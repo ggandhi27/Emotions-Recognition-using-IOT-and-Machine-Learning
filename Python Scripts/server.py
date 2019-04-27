@@ -1,26 +1,45 @@
 import thread
 import socket
 
+MOOD = "Happy"
+RESULT = "Happy"
+flag = ""
 
 def receive_program(conn,address) :
+    global MOOD
     while True:
         data = conn.recv(1024).decode()
         if not data:
             # if data is not received break
             break
-        print("from connected user: " + str(data))
 
+        data = data[2:]
+        data = data.split()
+        string = ""
+        string = string.join(data)
+        print("String :: "+string)
+        if (MOOD != string):
+            MOOD = string
 
 def send_program(conn,address) :
+    global RESULT
+    global flag
+
     while True:
-        data = raw_input(' -> ')
-        conn.send(data.encode())  # send data to the client
+        if flag != RESULT :
+            flag = RESULT
+            result = RESULT+"\n"
+            conn.send(result.encode())  # send data to the client
 
 
 def server_program():
     # get the hostname
     host = socket.gethostname()
+    host = socket.gethostbyname(host)
     port = 5000  # initiate port no above 1024
+
+    print "IP Address :: "+host
+    print "Port :: "+str(port)
 
     server_socket = socket.socket()  # get instance
     # look closely. The bind() function takes tuple as argument
@@ -39,8 +58,4 @@ def server_program():
         None
 
     conn.close()  # close the connection
-
-
-if __name__ == '__main__':
-    server_program()
 
