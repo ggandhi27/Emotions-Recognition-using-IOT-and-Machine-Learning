@@ -62,7 +62,7 @@ public class MoodActivity extends AppCompatActivity {
         happyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodText.setText("Happy");
+//                moodText.setText("Happy");
                 try {
                     dataOutputStream.writeUTF("Happy");
                     dataOutputStream.flush();
@@ -75,7 +75,7 @@ public class MoodActivity extends AppCompatActivity {
         sadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodText.setText("Sad");
+//                moodText.setText("Sad");
                 try {
                     dataOutputStream.writeUTF("Sad");
                     dataOutputStream.flush();
@@ -88,7 +88,7 @@ public class MoodActivity extends AppCompatActivity {
         fearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodText.setText("Fear");
+//                moodText.setText("Fear");
                 try {
                     dataOutputStream.writeUTF("Fear");
                     dataOutputStream.flush();
@@ -101,7 +101,7 @@ public class MoodActivity extends AppCompatActivity {
         angryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moodText.setText("Angry");
+//                moodText.setText("Angry");
                 try {
                     dataOutputStream.writeUTF("Angry");
                     dataOutputStream.flush();
