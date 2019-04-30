@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
+        final Intent intent1 = new Intent(this,MainService.class);
+        startService(intent1);
         setContentView(R.layout.activity_main);
 //        setContentView(R.layout.moods);
         ipAddressTxt = (EditText) findViewById(R.id.ipAddress);
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                         showToast("Trying to connect");
                         if (socket != null) {
                             Intent intent = new Intent(MainActivity.this, MoodActivity.class);
+                            stopService(intent1);
                             startActivity(intent);
                         }
                         else {

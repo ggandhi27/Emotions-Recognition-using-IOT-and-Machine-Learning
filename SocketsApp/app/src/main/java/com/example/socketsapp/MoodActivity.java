@@ -20,14 +20,13 @@ public class MoodActivity extends AppCompatActivity {
     DataOutputStream dataOutputStream;
     TextView moodText;
     Button closeBtn;
-
     static TextView staticMood;
+    Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moods);
-
         happyBtn = (Button)findViewById(R.id.happyBtn);
         sadBtn = (Button)findViewById(R.id.sadBtn);
         fearBtn = (Button)findViewById(R.id.fearBtn);
@@ -111,5 +110,32 @@ public class MoodActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void startHappyMusic() {
+        intent = new Intent(MoodActivity.this, HappyService.class);
+        startService(intent);
+    }
+
+    public  void stopMusic() {
+        if(intent != null) {
+            stopService(intent);
+        }
+    }
+
+    public void startSadMusic() {
+        intent = new Intent(MoodActivity.this, SadService.class);
+        startService(intent);
+
+    }
+
+    public  void startAngerMusic() {
+        intent = new Intent(MoodActivity.this, AngerService.class);
+        startService(intent);
+    }
+
+    public  void startFearMusic() {
+        intent = new Intent(MoodActivity.this, FearService.class);
+        startService(intent);
     }
 }
