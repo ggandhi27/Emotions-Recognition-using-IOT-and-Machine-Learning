@@ -1,5 +1,6 @@
 package com.example.socketsapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class MoodActivity extends AppCompatActivity {
     Button closeBtn;
     static TextView staticMood;
     Intent intent;
+    static Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class MoodActivity extends AppCompatActivity {
         angryBtn = (Button)findViewById(R.id.angerBtn);
         moodText = (TextView) findViewById(R.id.moodtxt);
         closeBtn = (Button) findViewById(R.id.close);
+        MoodActivity.context = getApplicationContext();
 
         MoodActivity.staticMood = moodText;
 
@@ -65,6 +68,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Happy");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startHappyMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -78,6 +83,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Sad");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startSadMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -91,6 +98,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Fear");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startFearMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -104,6 +113,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Angry");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startAngerMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -113,7 +124,7 @@ public class MoodActivity extends AppCompatActivity {
     }
 
     public void startHappyMusic() {
-        intent = new Intent(MoodActivity.this, HappyService.class);
+        intent = new Intent(MoodActivity.context, HappyService.class);
         startService(intent);
     }
 

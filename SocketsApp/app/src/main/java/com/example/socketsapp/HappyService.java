@@ -17,7 +17,7 @@ public class HappyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        player = MediaPlayer.create(this, R.raw.inil);
+        player = MediaPlayer.create(this, R.raw.happy);
         player.setLooping(true); // Set looping
         player.setVolume(100,100);
 
