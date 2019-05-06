@@ -1,5 +1,6 @@
 import thread
 import socket
+import random
 
 MOOD = "Happy"
 RESULT = "Happy"
@@ -36,14 +37,19 @@ def server_program():
     # get the hostname
     host = socket.gethostname()
     host = socket.gethostbyname(host)
-    port = 5000  # initiate port no above 1024
-
-    print "IP Address :: "+host
-    print "Port :: "+str(port)
-
     server_socket = socket.socket()  # get instance
     # look closely. The bind() function takes tuple as argument
-    server_socket.bind((host, port))  # bind host address and port together
+    
+    port = 0
+    while True:
+        port = random.randint(1000,9999)  # initiate port no above 1024
+        try:
+            server_socket.bind((host, port))  # bind host address and port together
+            break
+        except OSError as e :
+            continue
+    print "IP Address :: "+host
+    print "Port :: "+str(port)
 
     # configure how many client the server can listen simultaneously
     server_socket.listen(2)

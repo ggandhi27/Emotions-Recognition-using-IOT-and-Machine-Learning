@@ -26,6 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:enabled="true" android:name=".MainService" />
+        <service android:enabled="true" android:name=".HappyService" />
+        <service android:enabled="true" android:name=".AngerService" />
+        <service android:enabled="true" android:name=".SadService" />
+        <service android:enabled="true" android:name=".FearService" />
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

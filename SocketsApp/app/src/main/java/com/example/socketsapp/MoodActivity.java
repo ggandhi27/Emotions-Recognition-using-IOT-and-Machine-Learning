@@ -1,5 +1,6 @@
 package com.example.socketsapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,20 +21,21 @@ public class MoodActivity extends AppCompatActivity {
     DataOutputStream dataOutputStream;
     TextView moodText;
     Button closeBtn;
-
     static TextView staticMood;
+    Intent intent;
+    static Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moods);
-
         happyBtn = (Button)findViewById(R.id.happyBtn);
         sadBtn = (Button)findViewById(R.id.sadBtn);
         fearBtn = (Button)findViewById(R.id.fearBtn);
         angryBtn = (Button)findViewById(R.id.angerBtn);
         moodText = (TextView) findViewById(R.id.moodtxt);
         closeBtn = (Button) findViewById(R.id.close);
+        MoodActivity.context = getApplicationContext();
 
         MoodActivity.staticMood = moodText;
 
@@ -66,6 +68,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Happy");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startHappyMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -79,6 +83,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Sad");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startSadMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -92,6 +98,8 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Fear");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startFearMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -105,11 +113,40 @@ public class MoodActivity extends AppCompatActivity {
                 try {
                     dataOutputStream.writeUTF("Angry");
                     dataOutputStream.flush();
+                    stopMusic();
+                    startAngerMusic();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
 
+    }
+
+    public void startHappyMusic() {
+        intent = new Intent(MoodActivity.context, HappyService.class);
+        startService(intent);
+    }
+
+    public  void stopMusic() {
+        if(intent != null) {
+            stopService(intent);
+        }
+    }
+
+    public void startSadMusic() {
+        intent = new Intent(MoodActivity.this, SadService.class);
+        startService(intent);
+
+    }
+
+    public  void startAngerMusic() {
+        intent = new Intent(MoodActivity.this, AngerService.class);
+        startService(intent);
+    }
+
+    public  void startFearMusic() {
+        intent = new Intent(MoodActivity.this, FearService.class);
+        startService(intent);
     }
 }
