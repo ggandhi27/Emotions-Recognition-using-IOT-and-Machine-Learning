@@ -1,0 +1,4 @@
+#Tue Apr 30 20:28:46 IST 2019
+base.0=/home/ttn/Documents/College Project/Emotions-Recognition-using-IOT-and-Machine-Learning/musicApplication/app/build/intermediates/transforms/dexMerger/debug/3
+path.0=classes.dex
+renamed.0=classes.dex
