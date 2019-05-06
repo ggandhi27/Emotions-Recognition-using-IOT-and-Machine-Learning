@@ -36,7 +36,7 @@ def server_program():
     # get the hostname
     host = socket.gethostname()
     host = socket.gethostbyname(host)
-    port = 5000  # initiate port no above 1024
+    port = 5001  # initiate port no above 1024
 
     print "IP Address :: "+host
     print "Port :: "+str(port)

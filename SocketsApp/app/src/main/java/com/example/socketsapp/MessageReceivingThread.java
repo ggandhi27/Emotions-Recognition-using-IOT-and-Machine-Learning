@@ -75,7 +75,7 @@ public class MessageReceivingThread implements Runnable {
                 System.out.println("Message is :: " + MessageReceivingThread.message);
                 if(!MoodActivity.staticMood.getText().equals(message)) {
                     MoodActivity.staticMood.setText(message);
-                    playAudio();
+//                    playAudio();
                 }
             }
 
