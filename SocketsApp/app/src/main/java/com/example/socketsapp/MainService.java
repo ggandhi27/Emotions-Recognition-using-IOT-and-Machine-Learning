@@ -17,7 +17,7 @@ public class MainService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        player = MediaPlayer.create(this, R.raw.got);
+        player = MediaPlayer.create(this, R.raw.harry);
         player.setLooping(true); // Set looping
         player.setVolume(100,100);
 
